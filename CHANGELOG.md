@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [0.1.0] - 2022-06-24
+
+- Add basic support for interacting with USDA FDC endpoints
+
 ## [0.0.1] - 2022-01-26
 
 - Initial release
