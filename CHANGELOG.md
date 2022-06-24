@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [0.1.1] - 2022-06-24
+
+- Ensure `json` module is available to Client
+
 ## [0.1.0] - 2022-06-24
 
 - Add basic support for interacting with USDA FDC endpoints
