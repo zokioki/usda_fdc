@@ -1,21 +1,9 @@
 # frozen_string_literal: true
 
+require_relative 'helpers/configurable'
+
 module UsdaFdc
-  module Configuration
-    def configure
-      yield(self)
-    end
+  extend Configurable
 
-    def define_setting(name, default = nil)
-      instance_variable_set("@#{name}", default)
-
-      define_singleton_method("#{name}=") do |value|
-        instance_variable_set("@#{name}", value)
-      end
-
-      define_singleton_method(name) do
-        instance_variable_get("@#{name}")
-      end
-    end
-  end
+  define_setting :api_key
 end
