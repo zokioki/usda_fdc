@@ -27,6 +27,14 @@ client.food(534358)
 #=> { "dataType" => "Branded", "description" => "NUT 'N BERRY MIX", "fdcId" => 534358, ... }
 ```
 
+You can also configure the default API key globally for all `UsdaFdc::Client` instances:
+
+```ruby
+UsdaFdc.configure do |config|
+  config.api_key = 'your_api_key'
+end
+```
+
 For more information on interacting with the API, including accepted parameters and response formats, check out the official USDA FDC [API guide](https://fdc.nal.usda.gov/api-guide.html).
 
 ## Development

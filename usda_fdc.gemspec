@@ -6,7 +6,6 @@ Gem::Specification.new do |spec|
   spec.name = 'usda_fdc'
   spec.version = UsdaFdc::VERSION
   spec.authors = ['Zoran Pesic']
-  spec.email = ['zspesic@gmail.com']
 
   spec.summary = 'A Ruby interface to the USDA FoodData Central API.'
   spec.homepage = 'https://github.com/zokioki/usda_fdc'
