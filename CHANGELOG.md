@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [0.2.1] - 2022-07-15
+
+- Some internal cleanup
+
 ## [0.2.0] - 2022-07-15
 
 - Allow request methods to accept block to manage request
