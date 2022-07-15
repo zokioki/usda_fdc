@@ -11,20 +11,20 @@ module UsdaFdc
       @api_key = api_key || UsdaFdc.api_key
     end
 
-    def food(fdc_id, params = {})
-      get("/fdc/v1/food/#{fdc_id}", params)
+    def food(fdc_id, params = {}, &block)
+      get("/fdc/v1/food/#{fdc_id}", params, &block)
     end
 
-    def foods(body)
-      post('/fdc/v1/foods', body)
+    def foods(body, &block)
+      post('/fdc/v1/foods', body, &block)
     end
 
-    def foods_list(body)
-      post('/fdc/v1/foods/list', body)
+    def foods_list(body, &block)
+      post('/fdc/v1/foods/list', body, &block)
     end
 
-    def foods_search(body)
-      post('/fdc/v1/foods/search', body)
+    def foods_search(body, &block)
+      post('/fdc/v1/foods/search', body, &block)
     end
 
     def get(path, params = {})
@@ -33,6 +33,8 @@ module UsdaFdc
 
       request = Net::HTTP::Get.new(uri)
       set_default_headers_for(request)
+
+      yield(request) if block_given?
 
       response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
         http.request(request)
@@ -47,6 +49,8 @@ module UsdaFdc
       request = Net::HTTP::Post.new(uri)
       set_default_headers_for(request)
       request.body = body.to_json
+
+      yield(request) if block_given?
 
       response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
         http.request(request)
