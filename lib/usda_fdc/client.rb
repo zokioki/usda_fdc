@@ -34,7 +34,7 @@ module UsdaFdc
       uri.query = URI.encode_www_form(params) if params.any?
 
       request = Net::HTTP::Get.new(uri)
-      set_default_headers_for(request)
+      assign_default_headers(request)
 
       yield(request) if block_given?
 
@@ -49,7 +49,7 @@ module UsdaFdc
       uri = URI("#{API_URL}#{path}")
 
       request = Net::HTTP::Post.new(uri)
-      set_default_headers_for(request)
+      assign_default_headers(request)
       request.body = body.to_json
 
       yield(request) if block_given?
@@ -63,7 +63,7 @@ module UsdaFdc
 
     private
 
-    def set_default_headers_for(request)
+    def assign_default_headers(request)
       request['X-Api-Key'] = @api_key
       request['Content-Type'] = 'application/json'
       request['User-Agent'] = "usda_fdc gem (v#{UsdaFdc::VERSION})"
