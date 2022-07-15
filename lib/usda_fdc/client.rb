@@ -42,7 +42,7 @@ module UsdaFdc
         http.request(request)
       end
 
-      JSON.parse(response.body)
+      handle_response(response)
     end
 
     def post(path, body = {})
@@ -58,7 +58,7 @@ module UsdaFdc
         http.request(request)
       end
 
-      JSON.parse(response.body)
+      handle_response(response)
     end
 
     private
@@ -67,6 +67,19 @@ module UsdaFdc
       request['X-Api-Key'] = @api_key
       request['Content-Type'] = 'application/json'
       request['User-Agent'] = "usda_fdc gem (v#{UsdaFdc::VERSION})"
+    end
+
+    def handle_response(response)
+      case response
+      when Net::HTTPSuccess
+        JSON.parse(response.body)
+      when Net::HTTPClientError
+        raise UsdaFdc::ClientError.new(response.message, response.code)
+      when Net::HTTPServerError
+        raise UsdaFdc::ServerError.new(response.message, response.code)
+      else
+        response
+      end
     end
   end
 end
