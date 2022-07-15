@@ -17,15 +17,15 @@ module UsdaFdc
       get("/fdc/v1/food/#{fdc_id}", params, &block)
     end
 
-    def foods(body, &block)
+    def foods(body = {}, &block)
       post('/fdc/v1/foods', body, &block)
     end
 
-    def foods_list(body, &block)
+    def foods_list(body = {}, &block)
       post('/fdc/v1/foods/list', body, &block)
     end
 
-    def foods_search(body, &block)
+    def foods_search(body = {}, &block)
       post('/fdc/v1/foods/search', body, &block)
     end
 
