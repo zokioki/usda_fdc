@@ -1,5 +1,7 @@
 # UsdaFdc
 
+[![Gem Version](https://badge.fury.io/rb/usda_fdc.svg)](https://badge.fury.io/rb/usda_fdc)
+
 A Ruby interface to the USDA [FoodData Central](https://fdc.nal.usda.gov) API.
 
 ## Installation
