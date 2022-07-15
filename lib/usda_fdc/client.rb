@@ -2,13 +2,15 @@
 
 require 'net/http'
 require 'json'
+require_relative 'helpers/errors'
 
 module UsdaFdc
   class Client
     API_URL = 'https://api.nal.usda.gov'
 
-    def initialize(api_key)
+    def initialize(api_key = nil)
       @api_key = api_key || UsdaFdc.api_key
+      raise UsdaFdc::ArgumentError, 'An API key is required.' if @api_key.nil?
     end
 
     def food(fdc_id, params = {}, &block)
