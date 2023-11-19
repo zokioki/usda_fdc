@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [0.2.2] - 2023-11-18
+
+- Reduce build size
+
 ## [0.2.1] - 2022-07-15
 
 - Some internal cleanup
